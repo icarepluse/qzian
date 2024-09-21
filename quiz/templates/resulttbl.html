@@ -1,0 +1,53 @@
+{% extends 'dashmain.html' %}
+{% load static %}
+
+{% block usercontent %}
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Results </h3>
+ 
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Test</h4>
+        
+            </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Test ID</th>
+                  <th>Total questions </th>
+                  <th>Correct answer </th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in q %}
+              
+                <tr>
+                  <td>{{ i.testids }}</td>
+                  <td>{{ i.totalq }}</td>
+                  <td>{{ i.crct }}</td>
+                  <td><a href="showview?tid={{ i.key }}" class="btn btn-primary btn-sm">View</a></td>
+                </tr>
+                {%  endfor %}
+                
+                
+                
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      
+     
+    </div>
+  </div>
+
+
+{% endblock usercontent%}

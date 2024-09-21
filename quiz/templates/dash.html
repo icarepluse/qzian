@@ -1,0 +1,244 @@
+{% extends 'dashmain.html' %}
+{% load static %}
+
+{% block usercontent %}
+<div class="content-wrapper">
+    <div class="row d-none" id="proBanner">
+      <div class="col-12">
+        <span class="d-flex align-items-center purchase-popup">
+          <p>Like what you see? Check out our premium version for more.</p>
+          <a href="https://github.com/BootstrapDash/ConnectPlusAdmin-Free-Bootstrap-Admin-Template" target="_blank" class="btn ml-auto download-button">Download Free Version</a>
+          <a href="http://www.bootstrapdash.com/demo/connect-plus/jquery/template/" target="_blank" class="btn purchase-button">Upgrade To Pro</a>
+          <i class="mdi mdi-close" id="bannerClose"></i>
+        </span>
+      </div>
+    </div>
+    <div class="d-xl-flex justify-content-between align-items-start">
+      <h2 class="text-dark font-weight-bold mb-2"> Overview dashboard </h2>
+      <div class="d-sm-flex justify-content-xl-between align-items-center mb-2">
+        
+        <div class="dropdown ml-0 ml-md-4 mt-2 mt-lg-0">
+          
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
+            <h6 class="dropdown-header">Settings</h6>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
+          <ul class="nav nav-tabs tab-transparent" role="tablist">
+            <li class="nav-item">
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" id="business-tab" data-toggle="tab" href="#business-1" role="tab" aria-selected="false">Test</a>
+            </li>
+            <li class="nav-item">
+              
+            </li>
+            <li class="nav-item">
+              
+            </li>
+          </ul>
+          <div class="d-md-block d-none">
+            
+            
+          </div>
+        </div>
+        <div class="tab-content tab-transparent-content">
+          <div class="tab-pane fade show active" id="business-1" role="tabpanel" aria-labelledby="business-tab">
+            
+            <div class="row">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                          <h4 class="card-title mb-0">Recent Activity</h4>
+                          <div class="dropdown dropdown-arrow-none">
+                            <button class="btn p-0 text-dark dropdown-toggle" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="mdi mdi-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuIconButton1">
+                              <h6 class="dropdown-header">Settings</h6>
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-9 col-sm-8 grid-margin  grid-margin-lg-0">
+                        <div class="pl-0 pl-lg-4 "><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                          <div class="d-xl-flex justify-content-between align-items-center mb-2">
+                            <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">
+                              <h3 class="text-dark font-weight-bold mr-2 mb-0">Result</h3>
+                              
+                            </div>
+                            <div class="d-lg-flex">
+                              
+                              
+                            </div>
+                          </div>
+                          <div class="graph-custom-legend clearfix" id="device-sales-legend"><ul class="2-legend"><li><span class="legend-box" style="background:#a461d8;"></span><span class="legend-label text-dark">Demand</span></li><li><span class="legend-box" style="background:#fc5a5a;"></span><span class="legend-label text-dark">Supply</span></li></ul></div>
+                          <canvas id="device-sales" width="1076" height="538" style="display: block; width: 1076px; height: 538px;" class="chartjs-render-monitor"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <script src="{% static 'assets2/vendors/js/vendor.bundle.base.js' %}"></script>
+  <script src="{% static 'assets2/vendors/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'assets2/vendors/jquery-circle-progress/js/circle-progress.min.js' %}"></script>
+  <script>
+    (function($) {
+      document.querySelector('#bannerClose').addEventListener('click',function() {
+        document.querySelector('#proBanner').classList.add('d-none');
+      });
+      'use strict';
+      $(function() {
+
+    
+        if ($("#device-sales").length) {
+          var deviceSalesData = {
+            labels: [ {% for item in q %}
+            "{{ item.testids }}"
+            {% endfor %} ],
+            datasets: [{
+                label: 'Total questions',
+                data: [{% for item in q %}
+                "{{ item.totalq }}"
+                {% endfor %}],
+                backgroundColor: [
+                  '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8',
+                ],
+                borderColor: [
+                  '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8',
+                ],
+                borderWidth: 1,
+                fill: false
+              },
+              {
+                label: 'Correct answer',
+                data: [{% for item in q %}
+                "{{ item.crct }}"
+                {% endfor %}],
+                backgroundColor: [
+                  '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a',
+                ],
+                borderColor: [
+                  '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a',
+                ],
+                borderWidth: 1,
+                fill: false
+              }
+            ]
+          };
+          var deviceSalesOptions = {
+            scales: {
+              xAxes: [{
+                stacked: false,
+                barPercentage: .5,
+                categoryPercentage: 0.4,
+                position: 'bottom',
+                display: true,
+                gridLines: {
+                  display: false,
+                  drawBorder: false,
+                  drawTicks: false
+                },
+                ticks: {
+                  display: true, //this will remove only the label
+                  stepSize: 500,
+                  fontColor: "#a7afb7",
+                  fontSize: 14,
+                  padding: 10,
+                }
+              }],
+              yAxes: [{
+                stacked: false,
+                display: true,
+                gridLines: {
+                  drawBorder: false,
+                  display: true,
+                  color: "#eef0fa",
+                  drawTicks: false,
+                  zeroLineColor: 'rgba(90, 113, 208, 0)',
+                },
+                ticks: {
+                  display: true,
+                  beginAtZero: true,
+                  stepSize: 200,
+                  fontColor: "#a7afb7",
+                  fontSize: 14,
+                  callback: function(value, index, values) {
+                    return value ;
+                  },
+                },
+              }]
+            },
+            legend: {
+              display: false
+            },
+            legendCallback: function(chart) {
+              var text = [];
+              text.push('<ul class="' + chart.id + '-legend">');
+              for (var i = 0; i < chart.data.datasets.length; i++) {
+                text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+                if (chart.data.datasets[i].label) {
+                  text.push(chart.data.datasets[i].label);
+                }
+                text.push('</span></li>');
+              }
+              text.push('</ul>');
+              return text.join("");
+            },
+            tooltips: {
+              backgroundColor: 'rgba(0, 0, 0, 1)',
+            },
+            plugins: {
+              datalabels: {
+                display: false,
+                align: 'center',
+                anchor: 'center'
+              }
+            }
+          };
+          var barChartCanvas = $("#device-sales").get(0).getContext("2d");
+          // This will get the first returned node in the jQuery collection.
+          var barChart = new Chart(barChartCanvas, {
+            type: 'bar',
+            data: deviceSalesData,
+            options: deviceSalesOptions
+          });
+          document.getElementById('device-sales-legend').innerHTML = barChart.generateLegend();
+        }
+        
+        
+    
+    
+        
+        
+      });
+    })(jQuery);
+  </script>
+{% endblock usercontent%}

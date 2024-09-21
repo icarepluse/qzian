@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from templates.seekviral.com/qzain/quiz/Quiz5/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 11 Aug 2024 14:52:44 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+    <link rel="stylesheet" href="{% static 'assets/fonts/font.css' %}">
+
+    <!-- fontawesome 5 -->
+    <link rel="stylesheet" href="../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="{% static 'assets/css/Bootstrap/bootstrap.min.css' %}">
+
+    <!-- Custom Css Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animation.css' %}">
+    
+    <!--Result Css-->
+    <link rel="stylesheet" href="{% static 'assets/css/result_style.css' %}">
+</head>
+<body>
+
+    <main class="overflow-hidden">
+        <div class="row">
+            
+            <div class="col-md-12 tab-100">
+                <!-- form start -->
+                <form method="post" novalidate>
+                    <div class="show-section wrapper">
+                        <a href="./" class="pass_check" type="button" >Go to Home<i class="fa-solid fa-arrow-right"></i></a>
+                        <!-- step 1 -->
+                        <section class="steps">
+
+                            <div class="result_inner2">
+                                <h2>Result</h2>
+                                <div class="u_result">
+                                    <div class="u_score">Correct answers: {{crect}} </div>
+                                    <div class="u_prcnt">
+                                       
+                                    </div>
+                                    <span></span>
+                                </div>
+                                <div class="p_result">
+                                    <div class="p_score">Total Questions : {{ total }}</div>
+                                    <div class="p_prcnt">
+                                     
+                                    </div>
+                                    <span></span>
+                                </div>
+                                <div class="line"></div>
+                                <div class="result_show">
+                                 
+                                    <div class="pass_check">
+                                        <a href="/showview">
+                                        <i class="fa-solid fa-xmark"></i>Show Full Result</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                    
+                        </section>
+                    </div>
+                  
+                </form>
+            </div>
+        </div>
+        <div class="footer-line"></div>
+
+
+                <!-- result -->
+       
+    </main>
+
+    <div id="error"></div>
+
+    <!-- bootstrap 5 -->
+
+    <!-- bootstrap 5 -->
+    <script src="{% static 'assets/js/Bootstrap/bootstrap.min.js' %}"></script>
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/jQuery/jquery-3.6.3.min.js' %}"></script>
+    
+    <!-- Result JS -->
+    <script src="{% static 'assets/js/result.js' %}"></script>
+
+    <!-- Custom js -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    
+</body>
+
+<!-- Mirrored from templates.seekviral.com/qzain/quiz/Quiz5/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 11 Aug 2024 14:52:50 GMT -->
+</html>
